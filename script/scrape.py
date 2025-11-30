@@ -19,7 +19,7 @@ class Scraper:
             pd.DataFrame: A DataFrame containing all reviews for the specified app.
         '''
         
-        result = reviews_all(
+        result:list[dict] = reviews_all(
             app_id,
             sleep_milliseconds=0,
             lang='en',
@@ -29,9 +29,9 @@ class Scraper:
         
         df = pd.DataFrame(result)
         df['app_name'] = app_name
-        
+                
         df = df[['app_name', 'content', 'score', 'at']]
-        df.rename(columns={'content': 'review', 'at': 'date'}, inplace=True)
+        df.rename(columns={'content': 'review', 'at': 'date', "app_name": "bank", "score": "rating"}, inplace=True)
         df['date'] = pd.to_datetime(df['date']).dt.date
         
         return df
