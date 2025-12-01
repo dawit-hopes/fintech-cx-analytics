@@ -32,6 +32,7 @@ class Scraper:
                 
         df = df[['app_name', 'content', 'score', 'at']]
         df.rename(columns={'content': 'review', 'at': 'date', "app_name": "bank", "score": "rating"}, inplace=True)
+        df['rating'] = pd.to_numeric(df['rating'], errors='coerce').astype(int)
         df['date'] = pd.to_datetime(df['date']).dt.date
         
         return df
