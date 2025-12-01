@@ -30,6 +30,9 @@ class DataCleaner:
         Cleans the data not to include html
         """
 
+        if not isinstance(text, str):
+         return ""
+
         text = re.sub(r'https?://\S+|www\.\S+|<html>.*?</html>|<.*?>', '', text)
         text = re.sub(r'[^a-z\s]', '', text)
 
