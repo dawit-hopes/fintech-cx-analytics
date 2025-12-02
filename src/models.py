@@ -7,7 +7,6 @@ class Banks(Base):
     __tablename__ = "bank_reviews"
     bank_id = Column(Integer, primary_key=True)
     bank_name = Column(String)
-    app_name = Column(String)
     
 
 class Reviews(Base):
